@@ -166,8 +166,6 @@ func PutLockfileHandler(c *gin.Context, db *sqlx.DB) {
 		return
 	}
 
-	log.Printf("Got request %+v\n", request)
-
 	_, err := db.NamedExec(
 		`INSERT INTO lockfiles (repository_id, repository_name, content, updated_at)
 		VALUES (:repository_id, :repository_name, :content, CURRENT_TIMESTAMP)
